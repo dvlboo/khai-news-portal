@@ -23,6 +23,7 @@ use Inertia\Inertia;
 Route::get('/', [NewsController::class, 'index']);
 
 // Settingan Awal Homepage
+
 // Route::get('/', function() {
 //     return Inertia::render('Homepage', [
 //         'title' => 'Portal Berita Khai',

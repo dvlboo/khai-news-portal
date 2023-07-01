@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\NewsCollection;
 use Inertia\Inertia;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -13,9 +14,11 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all(); // menampilkan semua data dari database
+        $news = new NewsCollection(News::paginate(8));  // Pagenation -> (menampilkan data di depan berdasarkan jumlah parameter)
+
+        // $news = News::all(); // menampilkan semua data dari database
         // dd($news); // fungsi dydump
-        return Inertia::render('Homepage', [
+        return Inertia::render ('Homepage', [
             'title' => 'Portal Berita Khai',
             'description' => 'Selamat Datang di Khai News Portal',
             'news' => $news
