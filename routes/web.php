@@ -22,24 +22,34 @@ use Inertia\Inertia;
 // Settingan Fetching Data => User yang membuka Homepage akan diarahkan ke NewsController dengan action index
 Route::get('/', [NewsController::class, 'index']);
 
-// Settingan Awal Homepage
 
+Route::post(
+    '/news', [NewsController::class, 'store']
+    )->middleware(['auth', 'verified'])->name('create.news');
+Route::get(
+    '/news', [NewsController::class, 'show']
+    )->middleware(['auth', 'verified'])->name('my.news');
+
+
+Route::get(
+    '/news/edit', [NewsController::class, 'edit']
+    )->middleware(['auth', 'verified'])->name('edit.news');
+Route::post(
+    '/news/update', [NewsController::class, 'update']
+    )->middleware(['auth', 'verified'])->name('update.news');
+    
+    
+Route::post(
+    '/news/delete', [NewsController::class, 'destroy']
+    )->middleware(['auth', 'verified'])->name('delete.news');
+
+// Settingan Awal Homepage
 // Route::get('/', function() {
 //     return Inertia::render('Homepage', [
 //         'title' => 'Portal Berita Khai',
 //         'description' => 'Selamat Datang di Portal Berita Khai'
 //     ]);
 // });
-
-Route::get('/welcome', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-}); // Merender nilai dengan 4 data dari page welcome
-
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');

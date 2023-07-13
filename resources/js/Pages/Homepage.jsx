@@ -4,17 +4,19 @@ import Navbar from "@/Components/Navbar";
 import { Head } from "@inertiajs/react";
 
 export default function Homepage(props) {
-    // console.log('props :', props);
+    console.log('props :', props);
     return (
         <div className="min-h-screen bg-slate-400 text-white">
             <Head title={props.title} />
-            <Navbar />
+            <Navbar user={props.auth.user} />
+            {/* Passing Data User */}
             <div className="flex flex-col justify-center lg:flex-row lg:flex-wrap lg:items-stretch items-center gap-4 m-4">
                 <NewsList news={props.news.data}/>
                 {/* Passing Data News */}
             </div>
             <div className="flex justify-center items-center">
                 <Paginator meta={props.news.meta} />
+                {/* Passing Data Meta */}
             </div>
         </div>
     );

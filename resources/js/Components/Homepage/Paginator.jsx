@@ -8,12 +8,12 @@ const Paginator = ({ meta }) => {
   
   
   return (
-    <div class="join">
-      {prev && <Link href={prev} class="join-item btn">«</Link> }
+    <div className="join">
+      {prev && <Link href={prev} className="join-item btn">«</Link> }
       
-      <Link class="join-item btn">Page {current}</Link>
+      <Link className="join-item btn">Page {current}</Link>
 
-      {next && <Link href={next} class="join-item btn">»</Link> }
+      {next && <Link href={next} className="join-item btn">»</Link> }
     </div>
   );
 };
